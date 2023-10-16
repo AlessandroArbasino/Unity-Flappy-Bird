@@ -12,6 +12,7 @@ Material:
   m_ValidKeywords:
   - _ALPHABLEND_ON
   - _FADING_ON
+  - _NORMALMAP
   m_InvalidKeywords: []
   m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
@@ -25,7 +26,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: 0acaded95d5a3ba4facf6e5dedf390cb, type: 3}
+        m_Texture: {fileID: 2800000, guid: 035b3c89850b59542bf6c12ee95a0f26, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -45,7 +46,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: c22a079f2f9fa6c45bf9670eaea1ac5f, type: 3}
+        m_Texture: {fileID: 2800000, guid: 5afce65972b88ca4ea2c66da9e455490, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
