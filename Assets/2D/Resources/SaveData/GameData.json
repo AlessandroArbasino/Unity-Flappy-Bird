@@ -1,0 +1,26 @@
+{
+    "difficultyDataPool": {
+        "difficultyDatas": [
+            {
+                "name": "East",
+                "beginningScore" : "0"
+            },
+            {
+                "name": "Mediom",
+                "beginningScore": "10"
+            },
+            {
+                "name": "Hard",
+                "beginningScore": "20"
+            },
+            {
+                "name": "Impossible",
+                "beginningScore": "40"
+            },
+            {
+                "name": "Legend",
+                "beginningScore": "100"
+            }
+        ]
+    }
+}
