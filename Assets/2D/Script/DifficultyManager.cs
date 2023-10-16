@@ -27,8 +27,6 @@ public class DifficultyManager : MonoBehaviour
     public int points;
 
     public List<DifficultyValues> difficultyValuesList;
-
-    public static event System.Action<DifficultyValues> OnChangeDifficulty;
     private void Awake()
     {
         UI.OnDifficuiltyCheck += CheckDifficulty;
@@ -36,7 +34,7 @@ public class DifficultyManager : MonoBehaviour
 
     private void Start()
     {
-        OnChangeDifficulty?.Invoke(difficultyValuesList[(int)Difficulties.EASY]);
+        EventManager.OnChangeDifficulty(difficultyValuesList[(int)Difficulties.EASY]);
     }
 
     private void OnDestroy()
@@ -50,13 +48,13 @@ public class DifficultyManager : MonoBehaviour
         switch (points)
         {
             case 0:
-                OnChangeDifficulty?.Invoke(difficultyValuesList[(int)Difficulties.EASY]);
+                EventManager.OnChangeDifficulty(difficultyValuesList[(int)Difficulties.EASY]);
                 break;
             case 10:
-                OnChangeDifficulty?.Invoke(difficultyValuesList[(int)Difficulties.MEDIUM]);
+                EventManager.OnChangeDifficulty(difficultyValuesList[(int)Difficulties.MEDIUM]);
                 break;
             case 20:
-                OnChangeDifficulty?.Invoke(difficultyValuesList[(int)Difficulties.MEDIUM]);
+                EventManager.OnChangeDifficulty(difficultyValuesList[(int)Difficulties.MEDIUM]);
                 break;
             default: 
                 break;

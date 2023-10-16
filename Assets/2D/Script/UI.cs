@@ -17,20 +17,20 @@ public class UI : MonoBehaviour
 
     private void Awake()
     {
-        PlayerMovement.OnPointScored += ScorePoints;
-        PlayerMovement.OnDeath += ActivateDeadUI;
+        EventManager.PointScored += ScorePoints;
+        EventManager.Death += ActivateDeadUI;
 
-        NewGameButtonScript.OnNewGame += SetRespawnUI;
-        DifficultyManager.OnChangeDifficulty += UISpawn;
+        EventManager.NewGame += SetRespawnUI;
+        EventManager.ChangeDifficulty += UISpawn;
     }
 
     private void OnDestroy()
     {
-        PlayerMovement.OnPointScored -= ScorePoints;
-        PlayerMovement.OnDeath -= ActivateDeadUI;
+        EventManager.PointScored -= ScorePoints;
+        EventManager.Death -= ActivateDeadUI;
 
-        NewGameButtonScript.OnNewGame -= SetRespawnUI;
-        DifficultyManager.OnChangeDifficulty -= UISpawn;
+        EventManager.NewGame -= SetRespawnUI;
+        EventManager.ChangeDifficulty -= UISpawn;
     }
 
     private void UISpawn(DifficultyValues values)

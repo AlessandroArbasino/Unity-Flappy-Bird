@@ -11,7 +11,7 @@ public class LoadTile : MonoBehaviour
 
     private void Awake()
     {
-        NewGameButtonScript.OnNewGame += DestroyTile;
+        EventManager.NewGame += DestroyTile;
     }
     public void LoadTileMethod(int playerPosition,string playerName, int playerScore)
     {
@@ -27,6 +27,6 @@ public class LoadTile : MonoBehaviour
 
     private void OnDestroy()
     {
-        NewGameButtonScript.OnNewGame -= DestroyTile;
+        EventManager.NewGame -= DestroyTile;
     }
 }

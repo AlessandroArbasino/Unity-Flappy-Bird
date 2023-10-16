@@ -9,7 +9,7 @@ public class ScoreSound : MonoBehaviour
     private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
-        PlayerMovement.OnPointScored += PlaySound;
+        EventManager.PointScored += PlaySound;
     }
 
     private void PlaySound()
@@ -19,6 +19,6 @@ public class ScoreSound : MonoBehaviour
 
     private void OnDestroy()
     {
-        PlayerMovement.OnPointScored -= PlaySound;
+        EventManager.PointScored -= PlaySound;
     }
 }

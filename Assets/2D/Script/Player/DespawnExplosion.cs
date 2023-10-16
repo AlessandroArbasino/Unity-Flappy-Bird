@@ -6,7 +6,7 @@ public class DespawnExplosion : MonoBehaviour
 {
     private void Awake()
     {
-        NewGameButtonScript.OnNewGame += DestroyOnRespawn;
+        EventManager.NewGame += DestroyOnRespawn;
     }
   
     private void DestroyOnRespawn()
@@ -16,7 +16,7 @@ public class DespawnExplosion : MonoBehaviour
 
     private void OnDestroy()
     {
-        NewGameButtonScript.OnNewGame -= DestroyOnRespawn;
+        EventManager.NewGame -= DestroyOnRespawn;
     }
 
 }

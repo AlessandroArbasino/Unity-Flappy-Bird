@@ -6,13 +6,11 @@ using UnityEngine.UI;
 
 public class NewGameButtonScript : MonoBehaviour
 {
-    public static event Action OnNewGame;
-
     private Button button;
     private void Awake()
     {
         button = GetComponent<Button>();
-        SubmitName.OnActivateNewGame += ActivateButton;
+        EventManager.ActivateNewGame += ActivateButton;
     }
     void Start()
     {
@@ -26,7 +24,7 @@ public class NewGameButtonScript : MonoBehaviour
 
     private void NewGame()
     {
-        OnNewGame?.Invoke();
+        EventManager.OnNewGame();
     }
 
     private void ActivateButton()

@@ -6,12 +6,12 @@ public class TubeDestroyOnRespawn : MonoBehaviour
 {
     private void Awake()
     {
-        NewGameButtonScript.OnNewGame += DestroyOnRespawn;
+        EventManager.NewGame += DestroyOnRespawn;
     }
 
     private void OnDestroy()
     {
-        NewGameButtonScript.OnNewGame -= DestroyOnRespawn;
+        EventManager.NewGame -= DestroyOnRespawn;
     }
 
     private void DestroyOnRespawn()

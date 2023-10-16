@@ -7,11 +7,11 @@ public class GridDestroy : MonoBehaviour
     private void Awake()
     {
 
-        NewGameButtonScript.OnNewGame += RestartBack;
+        EventManager.NewGame += RestartBack;
     }
     private void OnDestroy()
     {
-        NewGameButtonScript.OnNewGame -= RestartBack;
+        EventManager.NewGame -= RestartBack;
     }
 
     private void RestartBack()

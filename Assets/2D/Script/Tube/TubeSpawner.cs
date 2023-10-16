@@ -18,8 +18,8 @@ public class TubeSpawner : MonoBehaviour
     private int maxSeparation;
     private void Awake()
     {
-        NewGameButtonScript.OnNewGame += ResetTubePosition;
-        DifficultyManager.OnChangeDifficulty += SetOffsetAndHight;
+        EventManager.NewGame += ResetTubePosition;
+        EventManager.ChangeDifficulty += SetOffsetAndHight;
     }
     void Start()
     {
@@ -28,8 +28,8 @@ public class TubeSpawner : MonoBehaviour
 
     private void OnDestroy()
     {
-        NewGameButtonScript.OnNewGame -= ResetTubePosition;
-        DifficultyManager.OnChangeDifficulty -= SetOffsetAndHight;
+        EventManager.NewGame -= ResetTubePosition;
+        EventManager.ChangeDifficulty -= SetOffsetAndHight;
     }
 
     void Update()

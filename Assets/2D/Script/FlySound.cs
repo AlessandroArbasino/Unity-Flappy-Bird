@@ -9,29 +9,29 @@ public class FlySound : MonoBehaviour
     private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
-        StartGame.OnGameStarted += StartFly;
-        PlayerMovement.OnDeath += ResetFlyPossibility;
+        EventManager.GameStarted += StartFly;
+        EventManager.Death += ResetFlyPossibility;
     }
 
    private void PlayFly()
    {
         audioSource.Play();
-        StartGame.OnGameStarted -= StartFly;
-        PlayerMovement.OnDeath -= ResetFlyPossibility;
+        EventManager.GameStarted -= StartFly;
+        EventManager.Death -= ResetFlyPossibility;
     }
 
     private void OnDestroy()
     {
-        PlayerMovement.OnMove -= PlayFly;
+        EventManager.Move -= PlayFly;
     }
 
     private void StartFly()
     {
-        PlayerMovement.OnMove += PlayFly;
+        EventManager.Move += PlayFly;
     }
 
     private void ResetFlyPossibility()
     {
-        PlayerMovement.OnMove -= PlayFly;
+        EventManager.Move -= PlayFly;
     }
 }

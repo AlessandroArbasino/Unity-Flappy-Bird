@@ -33,13 +33,13 @@ public class Standings : MonoBehaviour
     public Text playerPoints;
     private void Awake()
     {
-        PlayerMovement.OnDeath += LoadStandings;
-        SubmitName.OnSubmitName += SetTile;
+        EventManager.Death += LoadStandings;
+        EventManager.SubmitName += SetTile;
     }
     private void OnDestroy()
     {
-        PlayerMovement.OnDeath -= LoadStandings;
-        SubmitName.OnSubmitName -= SetTile;
+        EventManager.Death -= LoadStandings;
+        EventManager.SubmitName -= SetTile;
     }
 
     public void SetTile(string playerName)

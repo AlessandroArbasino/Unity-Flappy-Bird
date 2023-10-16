@@ -8,8 +8,8 @@ public class Animation : MonoBehaviour
 
     private void Awake()
     {
-        StartGame.OnGameStarted += StartAnimating;
-        PlayerMovement.OnDeath += RestartAnimationPossibility;
+        EventManager.GameStarted += StartAnimating;
+        EventManager.Death += RestartAnimationPossibility;
     }
     void Start()
 	{
@@ -18,8 +18,8 @@ public class Animation : MonoBehaviour
 
     private void OnDestroy()
     {
-		PlayerMovement.OnMove -= Animate;
-        StartGame.OnGameStarted -= StartAnimating;
+        EventManager.Move -= Animate;
+        EventManager.GameStarted -= StartAnimating;
     }
 
     void Animate()
@@ -29,11 +29,11 @@ public class Animation : MonoBehaviour
 
     private void StartAnimating()
     {
-        PlayerMovement.OnMove += Animate;
+        EventManager.Move += Animate;
     }
 
     private void RestartAnimationPossibility()
     {
-        PlayerMovement.OnMove -= Animate;
+        EventManager.Move -= Animate;
     }
 }

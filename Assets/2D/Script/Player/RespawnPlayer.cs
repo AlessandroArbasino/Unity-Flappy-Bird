@@ -8,7 +8,7 @@ public class RespawnPlayer : MonoBehaviour
 
     private void Awake()
     {
-        NewGameButtonScript.OnNewGame += ReSpawnPosition;
+        EventManager.NewGame += ReSpawnPosition;
     }
     void Start()
     {
@@ -17,7 +17,7 @@ public class RespawnPlayer : MonoBehaviour
 
     private void OnDestroy()
     {
-        NewGameButtonScript.OnNewGame -= ReSpawnPosition;
+        EventManager.NewGame -= ReSpawnPosition;
     }
 
     // Update is called once per frame

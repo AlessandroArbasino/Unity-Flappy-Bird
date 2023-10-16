@@ -8,7 +8,7 @@ public class CreateBackGround : MonoBehaviour
 
     private void Awake()
     {
-        NewGameButtonScript.OnNewGame += CreateBackGroundMethod;
+        EventManager.NewGame += CreateBackGroundMethod;
     }
     void Start()
     {
@@ -17,7 +17,7 @@ public class CreateBackGround : MonoBehaviour
 
     private void OnDestroy()
     {
-        NewGameButtonScript.OnNewGame -= CreateBackGroundMethod;
+        EventManager.NewGame -= CreateBackGroundMethod;
     }
     private void CreateBackGroundMethod()
     {

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.Events;
 using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -11,30 +12,49 @@ public class PlayerMovement : MonoBehaviour
     public float xMovementForce;
     public float yMovementForce;
 
-    public static event Action OnMove;
-    public static event Action OnDeath;
-    public static event Action OnPointScored;
-    public static event Action<int> OnDifficuiltyCheck;
-
     private float maximumVelocity;
+    private PlayerInput input;
 
     private void Awake()
     {
-        StartGame.OnGameStarted += StartMovement;
-        DifficultyManager.OnChangeDifficulty += SetVelocity;
-        NewGameButtonScript.OnNewGame += ResetForce;
-        OnDeath += ResetAvailableMovement;
+        EventManager.GameStarted += StartMovement;
+        EventManager.ChangeDifficulty += SetVelocity;
+        EventManager.NewGame += ResetForce;
+        EventManager.Death += ResetAvailableMovement;
     }
     private void Start()
     {
         rb= GetComponent<Rigidbody2D>();
         rb.simulated = false;
-        OnDifficuiltyCheck?.Invoke(0);
+        EventManager.OnDifficuiltyCheck(0);
+
+        input = new PlayerInput();
+        input.Enable();
+
+        input.Player.Fly.started += OnFly;
+    }
+    private void OnDestroy()
+    {
+        EventManager.GameStarted -= StartMovement;
+        EventManager.ChangeDifficulty -= SetVelocity;
+        EventManager.NewGame -= ResetForce;
+        EventManager.Death -= ResetAvailableMovement;
     }
 
-    private void OnFly()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        OnMove?.Invoke();
+        if (collision.gameObject.CompareTag("TubeSeparation")) 
+            EventManager.OnPointScored();
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        EventManager.OnDeath();
+    }
+
+    private void OnFly(InputAction.CallbackContext context)
+    {
+        EventManager.OnMove();
     }
     private void Move()
     {
@@ -48,16 +68,6 @@ public class PlayerMovement : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("TubeSeparation")) 
-            OnPointScored?.Invoke();
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        OnDeath?.Invoke();
-    }
     private void ResetForce()
     {
         rb.velocity = Vector3.zero;
@@ -70,21 +80,14 @@ public class PlayerMovement : MonoBehaviour
 
     private void StartMovement()
     {
-        OnMove += Move;
+        EventManager.Move += Move;
         rb.simulated = true;
     }
 
     private void ResetAvailableMovement()
     {
         rb.simulated = false;
-        OnMove -= Move;
+        EventManager.Move -= Move;
     }
 
-    private void OnDestroy()
-    {
-        StartGame.OnGameStarted -= StartMovement;
-        DifficultyManager.OnChangeDifficulty -= SetVelocity;
-        NewGameButtonScript.OnNewGame -= ResetForce;
-        OnDeath -= ResetAvailableMovement;
-    }
 }

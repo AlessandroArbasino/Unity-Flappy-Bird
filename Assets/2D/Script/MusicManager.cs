@@ -8,7 +8,7 @@ public class MusicManager : MonoBehaviour
     private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
-        DifficultyManager.OnChangeDifficulty += MusicSpeed;
+        EventManager.ChangeDifficulty += MusicSpeed;
     }
 
     private void MusicSpeed(DifficultyValues difficulty)
@@ -18,6 +18,6 @@ public class MusicManager : MonoBehaviour
 
     private void OnDestroy()
     {
-        DifficultyManager.OnChangeDifficulty -= MusicSpeed;
+        EventManager.ChangeDifficulty -= MusicSpeed;
     }
 }

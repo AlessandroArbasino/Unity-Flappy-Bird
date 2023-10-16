@@ -7,7 +7,7 @@ public class TubeDestroyer : MonoBehaviour
 {
     private void Awake()
     {
-        NewGameButtonScript.OnNewGame += DestroyOnRespawn;
+        EventManager.NewGame += DestroyOnRespawn;
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -18,7 +18,7 @@ public class TubeDestroyer : MonoBehaviour
     }
     private void OnDestroy()
     {
-        NewGameButtonScript.OnNewGame -= DestroyOnRespawn;
+        EventManager.NewGame -= DestroyOnRespawn;
     }
 
     private void DestroyOnRespawn()

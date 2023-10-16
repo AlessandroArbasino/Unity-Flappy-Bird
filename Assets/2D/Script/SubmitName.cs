@@ -11,12 +11,10 @@ public class SubmitName : MonoBehaviour
     [SerializeField]
     private Button submitButton;
 
-    public static event Action<string> OnSubmitName;
-    public static event Action OnActivateNewGame;
     public void SubmitNameMethod()
     {
-        OnSubmitName?.Invoke(playerNameField.text);
-        OnActivateNewGame?.Invoke();
+        EventManager.OnSubmitName(playerNameField.text);
+        EventManager.OnActivateNewGame();
 
         submitButton.interactable = false;
     }

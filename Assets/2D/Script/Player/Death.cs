@@ -8,13 +8,13 @@ public class Death : MonoBehaviour
     public ParticleSystem explosion;
     private void Awake()
     {
-        PlayerMovement.OnDeath += Dead;
-        NewGameButtonScript.OnNewGame += StopCoru;
+        EventManager.Death += Dead;
+        EventManager.NewGame += StopCoru;
     }
     private void OnDestroy()
     {
-        PlayerMovement.OnDeath -= Dead;
-        NewGameButtonScript.OnNewGame -= StopCoru;
+        EventManager.Death -= Dead;
+        EventManager.NewGame -= StopCoru;
     }
 
     private void Dead()

@@ -7,11 +7,9 @@ public class StartGame : MonoBehaviour
 {
     private Animator animator;
 
-    public static event Action OnGameStarted;
-
     private void Awake()
     {
-        NewGameButtonScript.OnNewGame += NewGame;
+        EventManager.NewGame += NewGame;
         animator = GetComponent<Animator>();
     }
     private void Start()
@@ -20,7 +18,7 @@ public class StartGame : MonoBehaviour
     }
     public void StartGameMethod()
     {
-        OnGameStarted?.Invoke();
+        EventManager.OnGameStarted();
     }
 
     private void NewGame()
