@@ -11,6 +11,15 @@ public class SubmitName : MonoBehaviour
     [SerializeField]
     private Button submitButton;
 
+    private void Awake()
+    {
+        submitButton.onClick.AddListener(SubmitNameMethod);
+    }
+
+    private void OnDestroy()
+    {
+        submitButton.onClick.RemoveListener(SubmitNameMethod);
+    }
     public void SubmitNameMethod()
     {
         EventManager.OnSubmitName(playerNameField.text);
@@ -22,5 +31,10 @@ public class SubmitName : MonoBehaviour
     private void OnEnable()
     {
         submitButton.interactable = true;    
+    }
+
+    private void OnDisable()
+    {
+        submitButton.interactable = false;
     }
 }
