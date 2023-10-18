@@ -29,6 +29,6 @@ public static class EventManager
     public static event Action GameStarted;
     public static void OnGameStarted() => GameStarted?.Invoke();
 
-    public static event Action<DifficultyValues> ChangeDifficulty;
-    public static void OnChangeDifficulty(DifficultyValues currentDifficulty) => ChangeDifficulty?.Invoke(currentDifficulty);
+    public static event Action<DifficultyData> ChangeDifficulty;
+    public static void OnChangeDifficulty(DifficultyData currentDifficulty) => ChangeDifficulty?.Invoke(currentDifficulty);
 }

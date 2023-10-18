@@ -73,7 +73,7 @@ public class PlayerMovement : MonoBehaviour
         rb.velocity = Vector3.zero;
     }
 
-    private void SetVelocity(DifficultyValues currentDifficulty)
+    private void SetVelocity(DifficultyData currentDifficulty)
     {
         maximumVelocity = currentDifficulty.maxSpeed;
     }

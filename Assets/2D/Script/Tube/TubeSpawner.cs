@@ -59,7 +59,7 @@ public class TubeSpawner : MonoBehaviour
         lastTubePosition = 0;
     }
 
-    private void SetOffsetAndHight(DifficultyValues difficulty)
+    private void SetOffsetAndHight(DifficultyData difficulty)
     {
         minOffeset = difficulty.tubeOffestMin;
         maxOffest = difficulty.tubeOffestMax;

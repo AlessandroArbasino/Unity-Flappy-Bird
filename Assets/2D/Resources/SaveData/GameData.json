@@ -2,24 +2,64 @@
     "difficultyDataPool": {
         "difficultyDatas": [
             {
-                "name": "East",
-                "beginningScore" : "0"
+                "name": "Easy",
+                "beginningScore": "0",
+                "tubeOffestMax": "10",
+                "tubeOffestMin": "8",
+                "tubeHeightMax": "-3",
+                "tubeHeightMin": "4",
+                "tubeSeparationMax": "20",
+                "tubeSeparationMin": "16",
+                "maxSpeed": "20",
+                "musicSpeed": "0.2"
             },
             {
-                "name": "Mediom",
-                "beginningScore": "10"
+                "name": "Medium",
+                "beginningScore": "10",
+                "tubeOffestMax": "10",
+                "tubeOffestMin": "8",
+                "tubeHeightMax": "-3",
+                "tubeHeightMin": "4",
+                "tubeSeparationMax": "17",
+                "tubeSeparationMin": "13",
+                "maxSpeed": "25",
+                "musicSpeed": "0.5"
             },
             {
                 "name": "Hard",
-                "beginningScore": "20"
+                "beginningScore": "20",
+                "tubeOffestMax": "10",
+                "tubeOffestMin": "8",
+                "tubeHeightMax": "-3",
+                "tubeHeightMin": "4",
+                "tubeSeparationMax": "15",
+                "tubeSeparationMin": "11",
+                "maxSpeed": "30",
+                "musicSpeed": "0.9"
             },
             {
                 "name": "Impossible",
-                "beginningScore": "40"
+                "beginningScore": "40",
+                "tubeOffestMax": "10",
+                "tubeOffestMin": "8",
+                "tubeHeightMax": "-3",
+                "tubeHeightMin": "4",
+                "tubeSeparationMax": "13",
+                "tubeSeparationMin": "9",
+                "maxSpeed": "35",
+                "musicSpeed": "1"
             },
             {
                 "name": "Legend",
-                "beginningScore": "100"
+                "beginningScore": "100",
+                "tubeOffestMax": "10",
+                "tubeOffestMin": "8",
+                "tubeHeightMax": "-3",
+                "tubeHeightMin": "4",
+                "tubeSeparationMax": "11",
+                "tubeSeparationMin": "7",
+                "maxSpeed": "40",
+                "musicSpeed": "1.2"
             }
         ]
     }

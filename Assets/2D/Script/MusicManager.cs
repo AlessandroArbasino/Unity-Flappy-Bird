@@ -11,7 +11,7 @@ public class MusicManager : MonoBehaviour
         EventManager.ChangeDifficulty += MusicSpeed;
     }
 
-    private void MusicSpeed(DifficultyValues difficulty)
+    private void MusicSpeed(DifficultyData difficulty)
     {
         audioSource.pitch = difficulty.musicSpeed;
     }

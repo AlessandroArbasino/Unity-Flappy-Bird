@@ -33,9 +33,9 @@ public class UI : MonoBehaviour
         EventManager.ChangeDifficulty -= UISpawn;
     }
 
-    private void UISpawn(DifficultyValues values)
+    private void UISpawn(DifficultyData values)
     {
-        difficulty.text = values.difficult.ToString();
+        difficulty.text = values.name.ToString();
     }
 
     private void ScorePoints()

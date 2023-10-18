@@ -7,33 +7,15 @@ using System.Runtime.Serialization;
 using UnityEngine;
 using UnityEngine.UI;
 
-
-public struct PlayerData : IComparable<PlayerData>
+public class Standings : MonoBehaviour,ISaveable
 {
-    public string Name;
-    public int Points { get; set; }
+    [SerializeField] private GameObject standingTile;
+    [SerializeField] private Text playerPoints;
+    [SerializeField] private int maxStandingSize;
 
-    public PlayerData(string name,int points)
-    {
-        Name = name; 
-        Points = points;
-    }
-
-    public int CompareTo(PlayerData previousPlayerData)
-    {
-        return  previousPlayerData.Points- Points;
-    }
-}
-public class Standings : MonoBehaviour
-{
-    public GameObject standingTile;
-
-    public int maxStandingSize;
-
-    public Text playerPoints;
+    private PlayerStandingsDataPool playerStandingsDataPool;
     private void Awake()
     {
-        EventManager.Death += LoadStandings;
         EventManager.SubmitName += SetTile;
     }
     private void OnDestroy()
@@ -44,43 +26,32 @@ public class Standings : MonoBehaviour
 
     public void SetTile(string playerName)
     {
-        List<PlayerData> standingLoad = new List<PlayerData>();
-        if (PlayerPrefs.HasKey("Standing"))
-            standingLoad = JsonConvert.DeserializeObject<List<PlayerData>>(PlayerPrefs.GetString("Standing"));
-
-        PlayerPrefs.DeleteKey("Standing");
-
-        PlayerData tilePlayerData = new PlayerData(playerName, int.Parse(playerPoints.text));
-        standingLoad.Add(tilePlayerData);
-        standingLoad.Sort();
-
-        if (standingLoad.Count>= maxStandingSize)
-        {
-            standingLoad.RemoveAt(maxStandingSize-1);
-        }
-
-        PlayerPrefs.SetString("Standing", JsonConvert.SerializeObject(standingLoad));
+        playerStandingsDataPool.playersStanding.Add(new PlayerStandingData(playerName, int.Parse(playerPoints.text)));
         LoadStandings();
     }
 
     private void LoadStandings()
     {
-        List<PlayerData> standing = new List<PlayerData>();
-        if (PlayerPrefs.HasKey("Standing"))
-            standing = JsonConvert.DeserializeObject<List<PlayerData>>(PlayerPrefs.GetString("Standing"));
+        Debug.Log("standings loaded");
+        List<PlayerStandingData> standing = playerStandingsDataPool.OrderedPlayerStandings();
 
         DestroyInstanzatedTiles();
 
-        foreach (PlayerData playerData in standing)
+        int instanziatedTiles = 0;
+        foreach (PlayerStandingData playerData in standing)
         {
             GameObject tileInstance = Instantiate<GameObject>(standingTile, gameObject.transform);
-            tileInstance.GetComponent<LoadTile>().LoadTileMethod(standing.LastIndexOf(playerData)+1, playerData.Name, playerData.Points);
+            tileInstance.GetComponent<LoadTile>().LoadTileMethod(standing.LastIndexOf(playerData)+1, playerData.nickname, playerData.score);
+            instanziatedTiles++;
+
+            if (instanziatedTiles >= maxStandingSize)
+                break;
         }
     }
 
     public void DeleteStanding()
     {
-        PlayerPrefs.DeleteKey("Standing");
+        playerStandingsDataPool.playersStanding.Clear();
         DestroyInstanzatedTiles();
     }
 
@@ -90,5 +61,16 @@ public class Standings : MonoBehaviour
         {
             Destroy(tile.gameObject);
         }
+    }
+
+    public void LoadData(SaveData data)
+    {
+        playerStandingsDataPool = data.playerData.playerStandingsDataPool;
+        EventManager.Death += LoadStandings;
+    }
+
+    public void SaveData(ref SaveData data)
+    {
+        data.playerData.playerStandingsDataPool.playersStanding = playerStandingsDataPool.playersStanding;
     }
 }

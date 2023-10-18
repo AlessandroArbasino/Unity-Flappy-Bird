@@ -1042,6 +1042,57 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 549092561}
   m_CullTransparentMesh: 1
+--- !u!1 &614374256
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 614374258}
+  - component: {fileID: 614374257}
+  m_Layer: 0
+  m_Name: DataManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &614374257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 614374256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f2672cf70f9f0046923f955e1669671, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  saveData:
+    gameData:
+      difficultyDataPool:
+        difficultyDatas: []
+    playerData:
+      playerStandingsDataPool:
+        playersStanding: []
+--- !u!4 &614374258
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 614374256}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &629983969
 GameObject:
   m_ObjectHideFlags: 0
@@ -1518,8 +1569,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   standingTile: {fileID: 7554338432414419449, guid: 573e664329e836446ba3bf6680f57861, type: 3}
-  maxStandingSize: 5
   playerPoints: {fileID: 648140034}
+  maxStandingSize: 5
 --- !u!114 &696149566
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1654,34 +1705,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   points: 0
-  difficultyValuesList:
-  - difficult: 0
-    tubeOffestMax: 10
-    tubeOffestMin: 8
-    tubeHeightMax: -3
-    tubeHeightMin: 4
-    tubeSeparationMax: 20
-    tubeSeparationMin: 16
-    maxSpeed: 20
-    musicSpeed: 0.253
-  - difficult: 1
-    tubeOffestMax: 10
-    tubeOffestMin: 8
-    tubeHeightMax: -3
-    tubeHeightMin: 4
-    tubeSeparationMax: 17
-    tubeSeparationMin: 13
-    maxSpeed: 25
-    musicSpeed: 0.585
-  - difficult: 2
-    tubeOffestMax: 10
-    tubeOffestMin: 8
-    tubeHeightMax: -3
-    tubeHeightMin: 4
-    tubeSeparationMax: 15
-    tubeSeparationMin: 11
-    maxSpeed: 30
-    musicSpeed: 0.907
 --- !u!4 &711747048
 Transform:
   m_ObjectHideFlags: 0
